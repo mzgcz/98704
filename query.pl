@@ -3,8 +3,8 @@
 use strict;
 use warnings;
 use utf8;
+use SelfURL;
 use Mojo::JSON;
-use Mojo::Parameters;
 require LWP::UserAgent;
 
 binmode(STDOUT, ':encoding(utf8)');
@@ -19,14 +19,13 @@ $ua->ssl_opts( verify_hostname => 0 );
 $ua->timeout(60);
 $ua->env_proxy;
 
-my $query_base_url = "https://kyfw.12306.cn/otn/lcxxcx/query";
-my $query_params = Mojo::Parameters->new(
-                                         'purpose_codes' => 'ADULT',
-                                         'queryDate' => $query_date,
-                                         'from_station' => $from_station,
-                                         'to_station' => $to_station
-                                        );
-my $query_url = $query_base_url."?".$query_params;
+my $query_url = compose_url(
+                            "https://kyfw.12306.cn/otn/lcxxcx/query",
+                            ['purpose_codes' => 'ADULT',
+                             'queryDate' => $query_date,
+                             'from_station' => $from_station,
+                             'to_station' => $to_station]
+                           );
 
 if ($echo_type == 1) {
   printf "%s\t\t%s\t\t%s\t\t%s\t\t%s\t\t%s\n",
