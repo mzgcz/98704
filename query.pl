@@ -15,7 +15,7 @@ my $to_station = $ARGV[2] || "NCG";
 my $echo_type = $ARGV[3] || 1;
 
 my $ua = LWP::UserAgent->new();
-$ua->ssl_opts( verify_hostname => 0 );
+$ua->ssl_opts(verify_hostname => 0);
 $ua->timeout(60);
 $ua->env_proxy;
 
