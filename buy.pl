@@ -59,7 +59,7 @@ until (order_check($ua)) {
 my $check_str;
 while (1) {
   print "输入验证码[购票]：";
-  chomp($check_str = <>);
+  chomp($check_str = <STDIN>);
   $check_str =~ s/\s//g;
   if ($check_str eq "r") {
     until (order_check($ua)) {

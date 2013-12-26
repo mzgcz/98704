@@ -39,7 +39,7 @@ sub login {
 
   while (1) {
     print "输入验证码[登录]：";
-    chomp($check_str = <>);
+    chomp($check_str = <STDIN>);
     $check_str =~ s/\s//g;
     if ($check_str eq "r") {
       until (login_check($ua)) {
