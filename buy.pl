@@ -3,21 +3,22 @@
 use strict;
 use warnings;
 use SelfURL;
+use SelfConf;
 use Self98704;
 use LWP::ConnCache;
 use LWP::UserAgent;
 use POSIX qw(strftime);
 
-my $train_code = $ARGV[0] || "XXXX";
-my $date = $ARGV[1] || "XXXX-XX-XX";
-my $from = $ARGV[2] || "XXX";
-my $to = $ARGV[3] || "XXX";
-my $from_name = "XX";
-my $to_name = "XX";
-my $username = 'XXXXXXXXXXXXXXXXXX';
-my $password = 'XXXXXXXXXX';
-my $passenger = "XXX,X,XXXXXXXXXXXXXXXXX,X_XXX,X,XXXXXXXXXXXXXXXXXXX,X_";
-my $ticket = "X,X,X,XXX,X,XXXXXXXXXXXXXXX,XXXXXXXXXX,X_X,X,X,XXX,X,XXXXXXXXXXXXXXX,XXXXXXXXXXX,X";
+my $train_code = $ARGV[0] || TRAIN_CODE;
+my $date = $ARGV[1] || DATE;
+my $from = $ARGV[2] || FROM;
+my $to = $ARGV[3] || TO;
+my $from_name = FROM_NAME;
+my $to_name = TO_NAME;
+my $username = USERNAME;
+my $password = PASSWORD;
+my $passenger = PASSENGER;
+my $ticket = TICKET;
 
 my $ua = LWP::UserAgent->new();
 $ua->ssl_opts(verify_hostname => 0);

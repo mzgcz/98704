@@ -7,7 +7,7 @@ use Mojo::JSON;
 use POSIX qw(strftime);
 
 our @EXPORT = qw(login query login_order order order_check order_info order_queue confirm);
-our $VERSION = 0.10;
+our $VERSION = 1.00;
 
 sub login_check {
   my $ua = shift;
