@@ -15,6 +15,7 @@ my $from = $ARGV[2] || FROM;
 my $to = $ARGV[3] || TO;
 my $from_name = FROM_NAME;
 my $to_name = TO_NAME;
+my $start_time = START_TIME;
 my $username = USERNAME;
 my $password = PASSWORD;
 my $passenger = PASSENGER;
@@ -30,6 +31,13 @@ $ua->conn_cache(LWP::ConnCache->new());
 my $no = 1;
 until (login($ua, $username, $password)) {
   printf "用户登录失败，第%d次重试\n", $no++;
+}
+
+my $now_time = strftime("%T", localtime());
+until ($now_time gt $start_time) {
+    sleep 1;
+    printf "当前时间是：%s\n", $now_time;
+    $now_time = strftime("%T", localtime());
 }
 
 my $secret_str = query($ua, $date, $from, $to, $train_code);
